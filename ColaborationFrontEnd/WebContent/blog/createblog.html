@@ -1,0 +1,39 @@
+
+<div id="create-blog">
+	<div class="container">
+		 <div class="form-area">
+			
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+					<div ng-show='ctrl.blog.errorMessage!=""'>
+						<div class="alart alart-danger fade in">Error :
+							{{ctrl.blog.errorMessage}}</div>
+					</div>
+					<fieldset>
+						<legend>Create Blog</legend>
+						<div class="form-inner">
+							<form ng-submit="ctrl.submit()" name="myForm"
+								class="form-horizontal">
+								<div>
+									<input type="text" name="title" required pattern=".{3,50}"
+										placeholder="Title of the Blog" ng-model="ctrl.blog.title">
+								</div>
+								<div>
+									<input type="text" name="reason" required pattern=".{5,75}"
+										placeholder="Why this blog ?"  ng-model="ctrl.blog.reason" >
+								</div>
+								<div>
+									<textarea type="text" name="content" required pattern=".{5,75}"
+										placeholder="Content of the Blog..." ng-model="ctrl.blog.content" ></textarea>
+								</div>
+								<div>
+									<input type="submit" class="btn btn-info floatright"
+										value="submit">
+								</div>
+							</form>
+						</div>
+					</fieldset>
+				 </div> 
+			
+		</div>
+	</div>
+</div>

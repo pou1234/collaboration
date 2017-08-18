@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="register" >
+	<div class="container">
+		<div class="form-area">
+			<div >
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+					<div ng-show='ctrl.user.errorMessage!=""'>
+						<div class="alart alart-danger fade in">
+							Error :	{{ctrl.user.errorMessage}}
+						</div>
+					</div>
+					<fieldset>
+						<legend>Sign Up</legend>
+						<div class="form-inner">
+							<form ng-submit="ctrl.register()" name="myForm"
+								class="form-horizontal">
+								<label>Register As.</label>
+								<div>
+									<input type="radio" name="role" value="STUDENT"
+										ng-model="ctrl.user.role"> Student 
+										<input type="radio" name="role" value="ALUMNI"
+										ng-model="ctrl.user.role"> Alumni 
+										<input type="radio" name="role" value="EMPLOYEE"
+										ng-model="ctrl.user.role"> Employee
+								</div>
+
+								<div>
+									<input type="text" name="id"required pattern=".{5,15}"
+										ng-minlength="5" placeholder="User ID"
+										ng-model="ctrl.user.id" />
+								</div>
+								<div>
+									<input type="text" name="name" required pattern=".{5,50}"
+										ng-minlength="5" placeholder="User Name"
+										ng-model="ctrl.user.name" />
+								</div>
+								<div>
+									<input type="password" name="password" required pattern=".{5,15}"
+										ng-minlength="5" placeholder="Password"
+										ng-model="ctrl.user.password" />
+								</div>
+								<div>
+									<input type="email" name="email" id="email" required pattern=".{5,50}"
+										placeholder="Email Id" ng-model="ctrl.user.emailId" />
+								</div>
+								
+								
+								<div>
+									<input type="radio" name="gender" id="gender" value="male"
+										ng-model="ctrl.user.gender"> Male 
+									<input type="radio" name="gender" id="gender" value="female"
+										ng-model="ctrl.user.gender"> Female
+								</div>
+
+								<div>
+									<input type="submit" class="btn btn-info floatright"
+										value="register"> 
+									<input type="button" class="btn btn-info floatright" 
+										value="reset form" ng-click="ctrl.reset()">
+								</div>
+							</form>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

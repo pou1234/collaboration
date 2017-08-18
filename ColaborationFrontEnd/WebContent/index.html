@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="myApp" >
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/css/font-awesome.css" >
+  <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="resources/css/jquery-ui.min.css" >
+  
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#/createblog"><span class="glyphicon glyphicon-create-blog"></span>Create Blog</a></li>
+        <li><a href="#/listblog"><span class="glyphicon glyphicon-list-blog"></span>List Blog</a></li>
+        <li><a href="#/createevent"><span class="glyphicon glyphicon-create-event"></span>Create Event</a></li>
+        <li><a href="#/listevent"><span class="glyphicon glyphicon-list-event"></span>List Event</a></li>
+        <li><a href="#/viewevent"><span class="glyphicon glyphicon-view-event"></span>View Event</a></li>
+        <li><a href="#/searchfriend"><span class="glyphicon glyphicon-search-friend"></span>Search Friend</a></li>
+        <li><a href="#/viewfriend"><span class="glyphicon glyphicon-view-friend"></span>View Friend</a></li>
+        <li><a href="#/viewfriendlist"><span class="glyphicon glyphicon-view-friend-list"></span>View Friend List</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-view>
+</ng-view>
+
+<script src="resources/js/angular.js"></script>
+<script src="resources/js/angular-cookies.min.js"></script>
+<script src="resources/js/angular-route.min.js"></script>
+<script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/app.js"></script>
+<script src="home/HomeController.js"></script>
+<script src="user/UserController.js"></script>
+<script src="user/UserService.js"></script>
+<script src="blog/BlogController.js"></script>
+<script src="blog/BlogService.js"></script>
+<script src="event/EventController.js"></script>
+<script src="event/EventService.js"></script>
+<script src="friend/FriendController.js"></script>
+<script src="friend/FriendService.js"></script>
+
+</body>
+</html>

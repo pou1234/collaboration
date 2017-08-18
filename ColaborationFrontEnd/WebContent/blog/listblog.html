@@ -1,0 +1,53 @@
+<!-- all-blog-view -->
+<div class="blogs">
+	<div class="container">
+		
+			<div ng-show="currentUser.role=='ADMIN'">
+				
+					<div class="col-md-12" ng-repeat="blog in ctrl.blogs"
+					ng-hide="blog.status=='R'">
+					
+						
+						<div>
+							<h3>{{blog.title}}</h3>
+							<p>Written By : {{blog.userId}}</p>
+							<div>
+								<input type="button" class="btn btn-info"
+									ng-click="ctrl.rejectBlog(blog, blog.id)"
+									ng-show="blog.status=='N'" value="Reject"
+									style="background: linear-gradient(to bottom right, #6f6f6f, #ef6b5e);"> 
+								<input	type="button" class="btn btn-info"
+									ng-click="ctrl.getSelectedBlog(blog.id)" value="Know More..">
+								<input type="button" class="btn btn-info"
+									ng-click="ctrl.approveBlog(blog, blog.id)"
+									ng-show="blog.status=='N'" value="Approve"
+									style="background: linear-gradient(to bottom right, #6f6f6f, #60d059);">
+							</div>
+							
+						</div>
+						<hr style="color: #f00;background-color: #f00;height: 5px;">
+						
+				</div>
+			</div>
+			<div ng-hide="currentUser.role=='ADMIN'">
+				<div class="col-md-4 blogs-grid" ng-repeat="blog in ctrl.blogs"
+					ng-show="blog.status=='A'">
+					<div>
+						<div >
+							<h3>{{blog.title}}</h3>
+							<p>Written By : {{blog.userId}}</p>
+							<div class="more">
+								<input type="button" class="btn btn-info btn-more"
+									ng-click="ctrl.getSelectedBlog(blog.id)" value="View Blog..">
+							</div>
+						</div>
+						
+					</div>
+					
+				 </div> 
+			</div>
+			<div class="clearfix"></div>
+	<!-- 	</div> -->
+	
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div id="list-blogs">
+	<div class="container">
+		<div class="row x-row">
+			<div class="col-md-8 col-md-offset-2">
+				<fieldset>
+					<legend class="x-legend">My Friends</legend>
+					<div class="blog-list-font">
+						<div>
+							<div class="x-panel" ng-repeat="friend in ctrl.friends"
+									style="margin-bottom: 2em;">
+								<a>
+									<div class="one" ng-show="friend.userId==currentUser.id">
+										<label>{{friend.friendId}}</label>										
+									</div>
+									<div class="one" ng-show="friend.userId!=currentUser.id">
+										<label>{{friend.userId}}</label>										
+									</div>
+									<div class="one" ng-show="friend.status=='A'">
+										<label><span>Status : </span>Friend</label>
+									</div> 
+									<input type="button" ng-click="ctrl.unFriend(friend, friend.id)"
+												class="btn btn-info floatright" value="Unfriend"
+												style="margin-top: 13px; width: 9em; margin-right: 8px;" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>

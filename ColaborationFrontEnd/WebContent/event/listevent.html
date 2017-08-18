@@ -1,0 +1,29 @@
+<div id="list-event">
+	<div class="container">
+		<div class="row x-row">
+			<div class="col-md-8 col-md-offset-2">
+				<fieldset>
+					<legend class="x-legend">Events</legend>
+					<div class="blog-list-font">
+						<div>
+							<div  class="x-panel" ng-repeat="event in ctrl.events" style="margin-bottom: 2em;">
+								<a>
+									<div class="one">
+										<label><span style="color: black;">Event Name : </span>{{event.name}}</label>
+									</div>
+									<div class="one">
+										<label><span style="color: black;">Location : </span>{{event.venue}}</label>
+									</div> 
+									<input type="button" ng-click="ctrl.getSelectedEvent(event.id)"
+												class="btn btn-info floatright" value="View Event"
+												style="margin-top: 13px; width: 10em; margin-right: 8px;" />
+												
+								</a>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
