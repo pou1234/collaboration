@@ -60,14 +60,7 @@ public class UserController {
 		if(users.isEmpty()) {
 			return new ResponseEntity<List<Users>>(HttpStatus.NO_CONTENT);
 		}
-		/*Users loggedInUser = (Users) session.getAttribute("loggedInUser");
-		for(Users  u:users)
-		{
-			int userID = u.getId();
-			boolean status =friendDAO.isFriend(userID, loggedInUser.getId());
-			if (!status  && userID.compareTo(loggedInUser.getId())!=0) {
-				list.add(u);
-			}*/
+		
 		
 		log.debug("**********End of listSearchForFriends() method.");
 		return new ResponseEntity<List<Users>>(list, HttpStatus.OK);
@@ -123,7 +116,7 @@ public class UserController {
 		log.debug("**********Starting of login() method.");
 		users = userDAO.authenticate(users.getId(), users.getPassword());
 		if(users == null) {
-			users = new Users();	//we need to create new users object to set errorMsg and errorCode...
+			users = new Users();	
 			users.setErrorCode("404");
 			users.setErrorMessage("Invalid userId or password...");
 			log.error("Invalid userId or password...");
@@ -149,7 +142,7 @@ public class UserController {
 		
 		log.debug("**********"+userId+"**********");
 		
-		//friendDAO.setOffline(userId);
+		
 		userDAO.setOffline(userId);
 		
 		session.invalidate();

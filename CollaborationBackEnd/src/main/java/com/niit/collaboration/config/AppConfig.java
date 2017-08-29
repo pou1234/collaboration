@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan(basePackages="com.niit.collaboration")
 public class AppConfig extends WebMvcConfigurerAdapter{
 	private static final Logger log=LoggerFactory.getLogger(AppConfig.class);

@@ -16,9 +16,12 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.collaboration.dao.BlogDAO;
 import com.niit.collaboration.dao.UserDAO;
+import com.niit.collaboration.daoimpl.BlogDAOImpl;
 import com.niit.collaboration.daoimpl.UserDAOImpl;
 import com.niit.collaboration.model.Blog;
+import com.niit.collaboration.model.Chat;
 import com.niit.collaboration.model.Event;
 import com.niit.collaboration.model.Friend;
 import com.niit.collaboration.model.Users;
@@ -35,8 +38,8 @@ public class ApplicationContextConfig {
 	    dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 	    dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
 	    
-	    dataSource.setUsername("COLL");
-	    dataSource.setPassword("COLL");
+	    dataSource.setUsername("COLL1");
+	    dataSource.setPassword("COLL1");
 	    
 	    
 	    Properties connectionProperties = new Properties();
@@ -45,50 +48,18 @@ public class ApplicationContextConfig {
 	    connectionProperties.setProperty("hibernate.dialect","org.hibernate.dialect.Oracle10gDialect");
 	    connectionProperties.setProperty("hibernate.format_sql","true");
 	    connectionProperties.setProperty("hibernate.jdbc.use_get_generated_keys","true");
-	    //connectionProperties.setProperty("hibernate.default_schema","COLB_DB");
+	   
 	    dataSource.setConnectionProperties(connectionProperties);
 	    return dataSource;
 	    
 	}
 
 
-       /* @Bean(name = "h2DataSource")
-         public DataSource getH2DataSource(){
-        	DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    	    dataSource.setDriverClassName("org.h2.Driver");
-    	    dataSource.setUrl("jdbc:h2:mem:tmp.db;INIT=CREATE SCHEMA IF NOT EXISTS NIITDB");
-    	    
-    	    dataSource.setUsername("sa");
-    	    dataSource.setPassword("");
-    	    
-    	    
-    	    Properties connectionProperties = new Properties();
-    	    connectionProperties.setProperty("hibernate.hbm2ddl.auto","update");
-    	    connectionProperties.setProperty("hibernate.show_sql","true");
-    	    connectionProperties.setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
-    	    dataSource.setConnectionProperties(connectionProperties);
-    	    return dataSource;
-        }*/
+       
 
-       /* @Bean(name = "dataSource")
-        public DataSource getMySQLDataSource(){
-        	BasicDataSource dataSource = new BasicDataSource();
-        	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        	dataSource.setUrl("jdbc:mysql://localhost:3306/niitdb");
-        	dataSource.setUsername("root");
-        	dataSource.setPassword("root");
-        	
-        	return dataSource;
-        	
-        	}*/
+       
 
-       /*private Properties getHibernateProperties(){
-    	   Properties properties= new Properties();
-    	   properties.put("hibernate.show_sql","true");
-    	   properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
-    	   properties.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
-    	   return properties;
-       }*/
+       
        
        
    
@@ -96,16 +67,14 @@ public class ApplicationContextConfig {
        @Bean(name = "sessionFactory")
        public SessionFactory getSessionFactory(DataSource dataSource){
     	  LocalSessionFactoryBuilder sessionBuilder = new  LocalSessionFactoryBuilder(dataSource);
-    	  //sessionBuilder.addProperties(getHibernateProperties());
+    	 
     	  sessionBuilder.addAnnotatedClass(Users.class);
     	  sessionBuilder.addAnnotatedClass(Blog.class);
-    	 // sessionBuilder.addAnnotatedClass(Chat.class);
+    	  sessionBuilder.addAnnotatedClass(Chat.class);
     	  sessionBuilder.addAnnotatedClass(Event.class);
     	  sessionBuilder.addAnnotatedClass(Friend.class);
-    	 // sessionBuilder.addAnnotatedClass(Job.class);
-    	//  sessionBuilder.addAnnotatedClass(JobApplication.class);
-    	//  sessionBuilder.addAnnotatedClass(ChatForum.class);
-    	//  sessionBuilder.addAnnotatedClass(ChatForumComment.class);
+    	 
+    	
     	  
     	  return sessionBuilder.buildSessionFactory();
        }
@@ -119,8 +88,18 @@ public class ApplicationContextConfig {
     	   
        }
 
-       
-       
+       @Autowired
+   	@Bean(name = "blogDAO")
+   	public BlogDAO getBlogDAO(SessionFactory sessionFactory) {
+   		return new BlogDAOImpl(sessionFactory);
+   	}
+
+       @Autowired
+      	@Bean(name = "blog")
+      	public Blog getBlog(SessionFactory sessionFactory) {
+      		return new Blog();
+      	}
+
        
        }
 

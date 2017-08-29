@@ -25,27 +25,20 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul>
+          
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#/createblog"><span class="glyphicon glyphicon-create-blog"></span>Create Blog</a></li>
-        <li><a href="#/listblog"><span class="glyphicon glyphicon-list-blog"></span>List Blog</a></li>
-        <li><a href="#/createevent"><span class="glyphicon glyphicon-create-event"></span>Create Event</a></li>
+        <li ng-show="currentUser==''"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li ng-hide="currentUser==''"><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li ng-hide="currentUser==''"><a href="#/createblog"><span class="glyphicon glyphicon-create-blog"></span>Create Blog</a></li>
+        <li ><a href="#/listblog"><span class="glyphicon glyphicon-list-blog"></span>List Blog</a></li>
+        <li ng-hide="currentUser==''"><a href="#/createevent"><span class="glyphicon glyphicon-create-event"></span>Create Event</a></li>
         <li><a href="#/listevent"><span class="glyphicon glyphicon-list-event"></span>List Event</a></li>
         <li><a href="#/viewevent"><span class="glyphicon glyphicon-view-event"></span>View Event</a></li>
         <li><a href="#/searchfriend"><span class="glyphicon glyphicon-search-friend"></span>Search Friend</a></li>
         <li><a href="#/viewfriend"><span class="glyphicon glyphicon-view-friend"></span>View Friend</a></li>
         <li><a href="#/viewfriendlist"><span class="glyphicon glyphicon-view-friend-list"></span>View Friend List</a></li>
+        <li><a href="#/chat"><span class="glyphicon glyphicon-chat"></span>Chat</a></li>
       </ul>
     </div>
   </div>
@@ -60,6 +53,9 @@
 <script src="resources/js/jquery-1.11.0.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/app.js"></script>
+<script src="resources/js/sockjs.js"></script>
+<script src="resources/js/sockjs-0.3.4.js"></script>
+<script src="resources/js/stomp.js"></script>
 <script src="home/HomeController.js"></script>
 <script src="user/UserController.js"></script>
 <script src="user/UserService.js"></script>
@@ -69,6 +65,7 @@
 <script src="event/EventService.js"></script>
 <script src="friend/FriendController.js"></script>
 <script src="friend/FriendService.js"></script>
-
+<script src="chat/ChatController.js"></script>
+<script src="chat/ChatService.js"></script>
 </body>
 </html>
